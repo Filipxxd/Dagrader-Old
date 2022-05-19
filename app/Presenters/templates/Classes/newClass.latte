@@ -1,0 +1,57 @@
+{block title}Nová třída{/block}
+{block content}
+<div class="d-flex">
+    <h1 class="fw-light">Nová třída</h1>
+    {include goMainBtn from '../components.latte'}
+</div>
+<hr class="border-2 border-top">
+<div>
+    {form newClass}
+        <div class="form-group form-floating">
+            {input schoolYear}
+            <label for="schoolYear">Ročník</label>
+        </div>
+
+        <div class="form-group form-floating">
+            {input classSymbol}
+            <label for="classSymbol">Třída</label>
+        </div>
+       
+        <div class="col-12 d-flex align-items-center my-2 mb-2">
+            <input type="text" class="form-control form-input" placeholder="Vyhledat studenta"
+                onkeyup="showStudents(this.value);">
+        </div>
+        <div class="col-11 overflow-auto text-center border d-flex flex-column align-items-center mx-auto" style="height: 40vh; max-height: 40vh;" id="studentList">
+
+        </div>
+        <script type="text/javascript">
+            function showStudents(str) {
+                if (str.length == 0) {
+                    document.getElementById('studentList').innerHTML = '';
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById('studentList').innerHTML = this.responseText;
+                        }
+                    };
+                    str = str.substring(str.indexOf(' ') + 1);
+                    xmlhttp.open('POST', 'studentsearch?do=search&string=' + str, true);
+                    xmlhttp.setRequestHeader(
+                    'Content-type',
+                    'application/x-www-form-urlencoded'
+                    );
+                    xmlhttp.send();
+                }
+            }
+        </script>
+        <div class="col-12 mt-4">
+            <button class="notBtn d-flex ms-auto align-items-center p-2 rounded text-decoration-none border iconLink clrBlack" type="submit" title="Uložit">
+                <i class="fas fa-save fs-3"></i>
+                <span class="ms-2 fw-bold">Uložit<b>
+            </button>
+        </div>
+    {/form}
+</div>
+{/block}

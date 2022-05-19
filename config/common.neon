@@ -1,0 +1,30 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 31 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no
+
+
+extensions:
+	recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
+
+recaptcha:
+	secretKey: 6LfTqLsfAAAAAJEPAZbyZrMse1-GpFa1y5E1VFV0
+	siteKey: 6LfTqLsfAAAAAI-AG7XS5Juj5YKbATuhWKp4gU8M
+
+
+forms:
+    messages:
+        REQUIRED: 'Vyplňte všechna pole'

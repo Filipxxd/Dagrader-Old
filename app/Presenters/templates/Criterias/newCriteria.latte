@@ -1,0 +1,58 @@
+{block content}
+<div class="d-flex">
+    <h1 class="fw-light">Nové kritérium</h1>
+    {include goMainBtn from '../components.latte'}
+</div>
+<hr class="border-2 border-top">
+<div class="col-12 col-lg-9 col-xl-7 mx-auto">
+{form criteriasForm}
+    {input activity}
+    {input year}
+    <div class="row px-2">
+
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="m-3">Chlapci</h4>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male1" class="text-left">Výborně</label>
+                {input maleFirst}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male2" class="text-left">Chvalitebně</label>
+                {input maleSecond}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male3" class="text-left">Dobře</label>
+                {input maleThird}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male4" class="text-left">Dostatečně</label>
+                {input maleFourth}
+            </span>
+        </div>
+
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="m-3">Dívky</h4>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female1" class="text-left">Výborně</label>
+                {input femaleFirst}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female2" class="text-left">Chvalitebně</label>
+                {input femaleSecond}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female3" class="text-left">Dobře</label>
+                {input femaleThird}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female4" class="text-left">Dostatečně</label>
+                {input femaleFourth}
+            </span>
+        </div>
+        <button type="submit" title="Vytvořit kritérium" class="d-flex notBtn align-items-center justify-content-center mt-3 p-3 mx-auto rounded text-decoration-none border iconLink clrBlack text-center">
+            <i class="fas fa-floppy-disk fs-3"></i>
+            <span class="ms-2 fw-bold">Vytvořit kritérium</span>
+        </button>
+    </div>
+{/form}
+</div>

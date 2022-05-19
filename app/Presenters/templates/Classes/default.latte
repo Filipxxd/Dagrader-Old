@@ -1,0 +1,27 @@
+{block title}Třídy{/block}
+{block content}
+
+
+
+<div class="d-flex">
+    <h1 class="fw-light">Moje třídy</h1>
+    <a n:href="Classes:newClass" title="Přidat novou třídu" class="d-flex ms-auto align-items-center px-2 rounded text-decoration-none border iconLink clrBlack">
+        <i class="fas fa-circle-plus fs-3"></i>
+        <span class="ms-2 btnText fw-bold">Nová třída</span>
+    </a>
+</div>
+<hr class="border-2 border-top">
+<div class="d-flex flex-wrap justify-content-start">
+    {foreach $classes as $class}
+        <a n:href="Classes:class $class->classId" title="Zobrazit třídu {$class->classIdentifier}" class="text-decoration-none text-dark border rounded m-2 iconLink clrBlack" style="width: 200px;">
+            <h5 class="card-title text-center fs-2 m-0 p-5">{$class->classIdentifier}</h5>
+        </a>
+        {else}
+            <span class="text-center col-12 mx-auto p-4">
+                Zatím jste nevytvořil žádnou třídu.
+            </span>
+    {/foreach}
+</div>
+
+
+{/block}

@@ -1,0 +1,94 @@
+{block title}Známky{/block}
+{block content}
+<h1 class="fw-light">Mé výkony</h1>
+<hr class="border-2 border-top">
+<div class="table-responsive overflow-auto text-center" style="height: 40vh; max-height: 40vh;" id="studentList">
+  <table class="table table-striped text-center">
+      <thead>
+          <tr>
+              <th scope="col">Datum</th>
+              <th scope="col">Aktivita</th>
+              <th scope="col">Výkon</th>
+              <th scope="col">Hodnocení</th>
+          </tr>
+      </thead>
+      <tbody>	
+        {foreach $performances as $performance}
+          <tr>
+            <th class="fw-light">{$performance['date']}</th>
+            <th class="fw-light">{$performance['activity']}</th>
+            <th class="fw-light">{$performance['performance']}</th>
+            <th class="fw-light">{$performance['mark']}</th>
+          </tr> 
+          {else}
+            <tr>
+              <th class="fw-light" colspan="4">Nic nenalezeno</th>
+            </tr>
+        {/foreach}
+      </tbody>
+  </table>
+</div>
+<hr class="border-2 border-top">
+{form performanceAdd}
+  <h3 class="mt-5">Zadání nového výkonu</h3>
+  <div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header" role="tablist">
+      <div class="step" data-target="#activity">
+        <button type="button" class="step-trigger" role="tab" id="activityTrigger" aria-controls="activity">
+          <span class="bs-stepper-circle ">1</span>
+          <span class="bs-stepper-label">Aktivita</span>
+        </button>
+      </div>
+      <div class="bs-stepper-line"></div>
+      <div class="step" data-target="#performance">
+        <button type="button" class="step-trigger" role="tab" id="performanceTrigger" aria-controls="performance">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">Výkon</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content pb-0 mt-2">
+
+        <div id="activity" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="activityTrigger">
+          <div class="form-group form-floating">
+            {input activityId}
+            <label for="activityChoice">Vyber aktivitu</label>
+          </div>
+          <span class="d-flex w-100">
+            <span onclick="stepper1.next()" class="d-flex ms-auto mt-1 align-items-center p-2 rounded text-decoration-none border iconLink clrBlack">
+              <span class="fw-bold">Dále</span>              
+              <i class="ms-2 fas fa-angle-right fs-3"></i>
+            </span>
+          </span>
+        </div>
+
+        <div id="performance" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="performanceTrigger">
+          <div class="form-group form-floating">
+            {input performance}
+            <label for="performanceChoice">Výkon</label>
+          </div>
+          <span class="d-flex w-100">
+            <span onclick="stepper1.previous()" class="d-flex mt-1 align-items-center p-2 rounded text-decoration-none border iconLink clrBlack">
+              <i class="fas fa-angle-left fs-3"></i>
+              <span class="ms-2 fw-bold">Zpět</span>
+            </span>
+            <button title="Přidat známku" type="submit" class="d-flex notBtn ms-auto mt-1 align-items-center p-2 rounded text-decoration-none border iconLink clrBlack">
+              <i class="fas fa-floppy-disk fs-3"></i>
+              <span class="ms-2 btnText fw-bold">Přidat známku</span>
+            </button>
+          </span>
+        </div>
+    </div>
+    <script src="{$basePath}/bs-stepper/bs-stepper.min.js"></script>
+    <script>
+      (function() {
+        "use strict"
+        window.stepper1 = new Stepper(document.querySelector("#stepper1"), {
+          animation: true,
+          linear: true
+        })
+      })();
+    </script>
+  </div>
+{/form}
+{/block}

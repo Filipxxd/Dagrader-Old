@@ -1,0 +1,34 @@
+{block content}
+<div class="d-flex">
+  <h1 class="fw-light">Student: {$studentInfo->fName} {$studentInfo->lName}</h1>
+    {include goBackBtn from '../components.latte'}
+</div>
+
+<hr class="border-2 border-top">
+<div class="table-responsive">
+  <table class="table table-striped text-center">
+    <thead>
+      <tr>
+        <th scope="col">Datum přidání</th>
+        <th scope="col">Druh aktivity</th>
+        <th scope="col">Dosažený výkon</th>
+        <th scope="col">Známka</th>
+      </tr>
+    </thead>
+    <tbody>
+      {foreach $studentsPerf as $performance}
+          <tr>
+              <td>{$performance->timedateAdd->format('d/m/Y')}</td>
+              <td>{$performance->activityName}</td> 
+              <td>{$performance->performance}</td> 
+              <td>{$performance->mark}</td> 
+          </tr>
+          {else}
+            <tr>
+              <td colspan="4">Student nemá žádné výkony</td>
+            </tr>
+      {/foreach}
+    </tbody>
+  </table>
+</div>
+{/block}

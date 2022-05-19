@@ -1,0 +1,178 @@
+/* 
+ **
+ ***  Custom Css
+ **
+ */
+
+/* 
+ ** COLORS VAR
+ */
+:root {
+  color-scheme: only light;
+
+  --offBlack: #141414;
+  --offWhite: #faf9f6;
+  --hoverWhite: #f7f6f6;
+  --grey: #9c9c9c;
+}
+/* ---------------- */
+
+/* 
+ ** DISABLE SELECTING
+ */
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  scroll-behavior: smooth;
+}
+/* ---------------- */
+
+/* 
+ * COLORS
+ */
+.bgBlack {
+  background-color: var(--offBlack);
+}
+.bgWhite {
+  background-color: var(--offWhite);
+}
+.clrBlack {
+  color: var(--offBlack);
+}
+.clrWhite {
+  color: var(--offWhite);
+}
+.clrGray {
+  color: #515151;
+}
+/* ---------------- */
+
+/* 
+ * NAVBAR
+ */
+.scaler {
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+.scaler:hover {
+  transform: scale(1.02);
+}
+@media screen and (max-width: 992px) {
+  .logoutBtn {
+    border-width: 0 !important;
+  }
+}
+/* ---------------- */
+
+/* 
+ * SCROLL
+ */
+/* 
+ * Search studenta do tridy 
+ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--hoverWhite);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grey);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--offBlack);
+}
+/* ---------------- */
+
+/*
+ ** ABSOLUTE ALERT MESSAGES 
+ */
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+}
+/* ---------------- */
+
+/* 
+ * RECAPTCHA 
+ */
+#g-recaptcha-response {
+  display: block !important;
+  position: absolute;
+  margin: -78px 0 0 0 !important;
+  width: 302px !important;
+  height: 76px !important;
+  z-index: -999999;
+  opacity: 0;
+}
+/* ---------------- */
+
+/* 
+ * About page video 
+ */
+video {
+  width: 100%;
+  height: auto;
+}
+/* ---------------- */
+
+/* 
+ * Custom BTN styles
+ */
+@media screen and (max-width: 992px) {
+  .btnText {
+    display: none;
+  }
+  .smallIconWidth {
+    width: 35px;
+  }
+}
+
+.iconLink {
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: background 0.1s linear;
+  -moz-transition: background 0.1s linear;
+  -o-transition: background 0.1s linear;
+  -ms-transition: background 0.1s linear;
+  transition: background 0.1s linear;
+}
+.iconLink:hover,
+.iconLink:active {
+  background: var(--hoverWhite);
+  color: inherit;
+}
+
+.pointer {
+  cursor: pointer;
+}
+.notBtn {
+  border: 0;
+  background: none;
+}
+/* ---------------- */
+
+/* 
+ ** REKLAMU NE
+ */
+.disclaimer {
+  display: none;
+}
+/* ---------------- */

@@ -1,0 +1,65 @@
+{block title}Úprava kritéria{/block}
+{block content}
+
+<div class="d-flex">
+    <h1 class="fw-light">Editace: {$activityName}, {$schoolYear}. ročník</h1>
+    {include goMainBtn from '../components.latte'}
+</div>
+
+<hr class="border-2 border-top">
+<div class="col-12 col-lg-9 col-xl-7 mx-auto">
+<form n:name="editForm" novalidate>
+    <div class="row px-2">
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="m-3">Chlapci</h4>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male1" class="text-left">Výborně</label>
+                {input maleFirst}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male2" class="text-left">Chvalitebně</label>
+                {input maleSecond}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male3" class="text-left">Dobře</label>
+                {input maleThird}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="male4" class="text-left">Dostatečně</label>
+                {input maleFourth}
+            </span>
+        </div>
+
+        <div class="col-12 col-md-6 text-center">
+            <h4 class="m-3">Dívky</h4>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female1" class="text-left">Výborně</label>
+                {input femaleFirst}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female2" class="text-left">Chvalitebně</label>
+                {input femaleSecond}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female3" class="text-left">Dobře</label>
+                {input femaleThird}
+            </span>
+            <span class="d-flex align-items-center mb-2">
+                <label for="female4" class="text-left">Dostatečně</label>
+                {input femaleFourth}
+            </span>
+        </div>
+        <button type="submit" title="Uložit změny" class="d-flex notBtn align-items-center justify-content-center mt-3 p-2 mx-auto col-12 col-md-10 col-lg-8 rounded text-decoration-none border iconLink clrBlack text-center">
+            <i class="fas fa-floppy-disk fs-3"></i>
+            <span class="ms-2 fw-bold">Uložit</span>
+        </button>
+    </div>
+</form>   
+        <div class="errors my-1" n:if="$form->hasErrors()">
+            <span n:foreach="$form->errors as $error" style="color: red" class="m-2">
+                <i class="fa-solid fa-exclamation"></i>
+                {$error}
+            </span>
+        </div>
+</div>
+{/block}

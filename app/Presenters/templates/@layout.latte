@@ -1,0 +1,62 @@
+{spaceless}
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="Dagrader je webová aplikace navržená pro vypočet atletických výkonů a jejich následnému uschování." />
+	<meta name="keywords" content="tělocvik, tělesná výchova, atletika, známky, výkony, vypočetní aplikace">
+	<meta name="robots" content="noindex">
+	<meta name="author" content="Filip Chromečka">
+
+	<title>Dagrader | {ifset title}{include title|stripHtml}{/ifset}</title>
+	
+	<link rel="icon" href="{$basePath}/medias/logo.png" type="image/x-icon" />
+	<link rel="manifest" href="{$basePath}/manifest.webmanifest" />
+	<link
+		rel="stylesheet"
+		href="{$basePath}/bootstrap/bootstrap.min.css"
+		type="text/css"/>
+	<link
+		rel="stylesheet"
+		href="{$basePath}/bs-stepper/bs-stepper.min.css"
+		type="text/css"/>
+	<link
+		rel="stylesheet"
+		href="{$basePath}/custom/custom.css"
+		type="text/css"/>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+
+			<div n:foreach="$flashes as $flash" n:class="alert, $flash->type, d-flex, px-2" id="alert">
+				<span class="d-flex align-items-center">{$flash->message}</span>
+				<button type="button" class="btn-close ms-auto fs-4" data-bs-dismiss="alert" aria-label="Zavřít"></button>
+				<script type="text/javascript">
+					setTimeout(function () {
+						var alert = document.getElementById('alert');
+						alert.classList.add('d-none');
+					}, 5000);
+				</script>
+			</div>
+
+			{if !$presenter->isLinkCurrent('User:*')}
+				{include nav from 'components.latte'}
+				<div class="col-12 col-md-11 col-lg-10 col-xl-9 py-3 p-md-4 shadow bg-body rounded-1 text-start mx-auto">		
+			{/if}
+
+			{include content}
+
+			{if !$presenter->isLinkCurrent('User:*')}
+				</div>
+			{/if}
+			<div class="mt-4"></div>
+		</div>
+	</div>
+	{include scripts from 'components.latte'}
+</body>
+</html>
+{/spaceless}

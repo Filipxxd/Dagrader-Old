@@ -1,0 +1,36 @@
+{block title}Přihlášení{/block}
+{block content}
+{form signInForm}
+<div class="d-flex justify-content-center mt-5 w-100">
+    <div class="loginContainer text-center">
+        <h2 class="fw-light my-3 text-start">Vyplňte své údaje</h2>
+        <div class="form-group d-flex justify-content-center align-items-center">
+            <i class="fas fa-user fa-lg smallIconWidth mx-2"></i>
+            {input login}    
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2">
+            <i class="fas fa-key fa-lg smallIconWidth mx-2"></i>
+            {input password}
+            <div class="input-group-addon pointer position-relative">
+                <i class="fa fa-eye position-absolute clrGray" title="Zobrazit heslo" onclick="toggleVisibility('frm-signInForm-password', this);" style="width: 25px; left: -30px; top: -8px;" aria-hidden="true"></i>
+            </div>    
+        </div>
+
+        <div class="form-check mt-2">
+            {input stayLoggedIn}
+        </div>
+
+        <div class="form-group mt-2" title="" >
+            <input type="submit" class="btn btn-primary w-100" style="border-radius: 10px;" value="Přihlásit se" title="Přihlásit se">
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <div class="form-group">
+            <a n:href="User:register" class="btn btn-secondary w-100" style="border-radius: 10px;" title="Nemáte účet? Registrovat se">Registrovat se</a>
+        </div>
+    </div>
+</div>
+{/form}
+{/block}

@@ -1,0 +1,86 @@
+{block title}Třída {$class->className}{/block}
+{block content}
+<div class="d-flex">
+  <h1 class="fw-light">Třída {$class->className}</h1>
+  <div class="d-flex ms-auto">
+    <a href="?do=removeClass&classId={$classId}" title="Smazat třídu" onclick="return confirmModal(event, 'Opravdu chcete smazat třídu {$class->className}?', 'Tato akce vymaže všem studentům jejich výkony!');" style="max-width: 150px; width: auto;" class="d-flex mx-3 align-items-center p-2 rounded text-decoration-none border iconLink clrBlack">
+      <i class="fas fa-trash-can fs-3"></i>
+      <span class="ms-2 fw-bold">Smazat třídu</span>
+    </a>
+    {include goMainBtn from '../components.latte'}
+  </div>
+</div>
+
+<hr class="border-2 border-top">
+  <div class="d-flex mb-2">
+    <h2 class="fw-light">Seznam žáků</h2>
+    <a href="?do=exportexcel&classId={$classId}" title="Stáhnout známky žáků" style="max-width: 200px; width: auto;" class="d-flex ms-auto align-items-center p-2 rounded text-decoration-none border iconLink clrBlack">
+      <i class="fa-solid fa-download fs-4"></i>
+      <span class="ms-2 fw-bold btnText">Stáhnout známky</span>
+    </a>
+  </div>
+  
+  <div class="d-flex flex-column w-100 mx-auto">
+    {ifset $students}
+      {foreach $students as $student}
+        <span class="d-flex my-2 col-12 col-md-10 col-xl-6 mx-auto border rounded p-2">
+          <span class="d-flex align-items-center">{$student->lName} {$student->fName}</span>
+          <span class="ms-auto d-flex">
+            <a href="student?do=performances&userId={$student->userId}" title="Známky žáka" class="d-flex notBtn align-items-center justify-content-center p-2 rounded text-decoration-none border iconLink clrBlack text-center">
+              <i class="fas fa-1 smallIconWidth"></i>
+              <span class="ms-2 btnText">Známky</span>
+            </a>
+            <a href="?do=removeStudent&userId={$student->userId}&classId={$classId}" onclick="return confirmModal(event);" title="Odstranit žáka" class="d-flex notBtn align-items-center justify-content-center ms-1 p-2 rounded text-decoration-none border iconLink clrBlack text-center">
+              <i class="fas fa-trash-can smallIconWidth"></i>
+              <span class="ms-2 btnText">Odebrat</span>
+            </a>
+          </span>
+        </span>
+        {else}
+          <span class="text-center col-12 mx-auto p-4">
+          V této třídě nejsou žádní žáci.
+          </span>
+        {/foreach}
+    {/ifset}
+  </div>
+  <hr class="border-2 border-top">
+    <h2 class="fw-light">Přidat do třídy</h2>
+      <div class="col-12 d-flex align-items-center my-2 mb-2">
+          <input type="text" class="form-control form-input" placeholder="Vyhledat studenta"
+              onkeyup="showStudents(this.value);">
+      </div>
+      {form editClass}
+      <div class="col-11 overflow-auto text-center border d-flex flex-column align-items-center mx-auto" style="height: 40vh; max-height: 40vh;" id="studentList">
+
+      </div>
+        <div class="col-12 mt-4">
+            <button class="notBtn d-flex ms-auto align-items-center p-2 rounded text-decoration-none border iconLink clrBlack" type="submit" title="Přidat žáka do třídy">
+                <i class="fas fa-save fs-3"></i>
+                <span class="ms-2 btnText fw-bold">Přidat do třídy<b>
+            </button>
+        </div>
+      {/form}
+  </div>
+  <script type="text/javascript">
+    function showStudents(str) {
+        if (str.length == 0) {
+            document.getElementById('studentList').innerHTML = '';
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById('studentList').innerHTML = this.responseText;
+                }
+            };
+            str = str.substring(str.indexOf(' ') + 1);
+            xmlhttp.open('POST', 'studentsearch?do=search&string=' + str, true);
+            xmlhttp.setRequestHeader(
+            'Content-type',
+            'application/x-www-form-urlencoded'
+            );
+            xmlhttp.send();
+        }
+    }
+  </script>
+{/block}

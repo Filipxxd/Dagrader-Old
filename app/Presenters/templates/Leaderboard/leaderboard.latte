@@ -1,0 +1,13 @@
+{block content}
+    {foreach $performances as $performance}
+        <tr>
+            <th scope="row">{$iterator->counter}</th>
+            <td>{$performance->studentName}</td>
+            <td>{$performance->performance}</td>
+        </tr>
+        {else}
+            <tr>
+                <td colspan=3>Nenalezen žádný záznam</td>
+            </tr>
+    {/foreach}
+{/block}

@@ -1,0 +1,68 @@
+{block title}Registrace{/block}
+{block content}
+
+
+
+<form n:name="registerForm" class="formR needs-validation">
+
+<div class="col-12 d-flex justify-content-center my-5">
+    <div class="loginContainer text-center">
+        <h2 class="fw-light my-3 text-start">Registrace nového uživatele</h2>
+        
+        <div class="form-group">
+            {input login}
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2">
+            {input fName}    
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2">
+            {input lName}
+        </div>
+
+        <div class="form-group d-flex justify-content-around align-items-center my-2 w-50 mx-auto">
+            <label>Pohlaví</label>
+            {input gender}
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2 passw">
+            {input password}
+            <div class="input-group-addon pointer position-relative">
+                <i class="fa fa-eye position-absolute clrGray" title="Zobrazit heslo" onclick="toggleVisibility('frm-registerForm-password', this);" style="width: 25px; left: -30px; top: -8px;" aria-hidden="true"></i>
+            </div>
+        </div>
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2">
+            {input confirmPassword}
+            <div class="input-group-addon pointer position-relative">
+                <i class="fa fa-eye position-absolute clrGray" title="Zobrazit heslo" onclick="toggleVisibility('frm-registerForm-confirmPassword', this);" style="width: 25px; left: -30px; top: -8px;" aria-hidden="true"></i>
+            </div>
+        </div>
+
+
+        <div class="form-group d-flex justify-content-center align-items-center mt-2">
+            <div n:name="recaptcha"></div>
+        </div>
+
+
+        <div class="form-group mt-3">
+            {input submit}
+        </div>
+
+        <div class="dropdown-divider"></div>
+
+        <div class="form-group">
+            <a n:href="User:login" class="btn btn-secondary w-100" style="border-radius: 10px;">Přihlásit se</a>
+        </div>
+
+        <div class="errors my-1" n:if="$form->hasErrors()">
+            <span n:foreach="$form->errors as $error" style="color: red" class="m-2">
+                <i class="fa-solid fa-exclamation"></i>
+                {$error}
+            </span>
+        </div>
+    </div>
+</div>
+</form>
+{/block}

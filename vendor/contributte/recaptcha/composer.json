@@ -1,0 +1,46 @@
+{
+  "name": "contributte/recaptcha",
+  "description": "Google reCAPTCHA for Nette - Forms",
+  "keywords": ["nette", "forms", "captcha", "recaptcha", "google"],
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://github.com/contributte/reCAPTCHA",
+  "authors": [
+    {
+      "name": "Milan Felix Šulc",
+      "homepage": "https://f3l1x.io"
+    }
+  ],
+  "suggest": {
+    "ext-openssl": "To make requests via https"
+  },
+  "require": {
+    "php": ">=7.2",
+    "contributte/di": "^0.5.1",
+    "nette/forms": "^3.0.0",
+    "nette/utils": "^3.0.0"
+  },
+  "require-dev": {
+    "ninjify/nunjuck": "^0.4",
+    "ninjify/qa": "^0.12",
+    "phpstan/phpstan-deprecation-rules": "^0.12",
+    "phpstan/phpstan-nette": "^0.12",
+    "phpstan/phpstan": "^0.12",
+    "phpstan/phpstan-strict-rules": "^0.12"
+  },
+  "autoload": {
+    "psr-4": {
+      "Contributte\\ReCaptcha\\": "src"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "3.5.x-dev"
+    }
+  }
+}

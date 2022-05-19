@@ -1,0 +1,15 @@
+{block content}
+{foreach $students as $student}
+<span class="form-check my-1 bg-white pointer w-75 border rounded">
+    <input  class="form-check-input pointer position-relative"
+            type="checkbox" 
+            name="userIds[]"
+            value="{$student->userId}" 
+            id="student{$student->userId}">
+    <label class="form-check-label pointer" for="student{$student->userId}" style="width: 99%;">
+       {$student->fName.' '.$student->lName}
+    </label>
+</span>
+{else}
+<div style="line-height: 39vh;">Nic nenalazeno</div>
+{/foreach}

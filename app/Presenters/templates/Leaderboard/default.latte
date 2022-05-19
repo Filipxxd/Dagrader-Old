@@ -1,0 +1,70 @@
+{block title}Tabulka nejlepších{/block}
+{block content}
+<h1 class="fw-light">Tabulka nejlepších</h1>
+<hr class="border-2 border-top">    
+<form n:name="filterForm">
+    <div class="d-flex flex-column flex-md-row justify-content-center justify-content-md-evenly">
+
+        <div class="form-group form-floating col-12 col-md-2" title="Filtrace ročníku">
+            {input yearSelector}
+            <label for="yearSelector">Ročník</label>
+        </div>
+
+        <div class="form-group form-floating col-12 col-md-2"  title="Filtrace aktivity">
+            {input activitySelector}
+            <label for="activitySelector">Aktivita</label>
+        </div>
+
+        <div class="form-group form-floating col-12 col-md-2"  title="Filtrace pohlaví">
+            {input genderSelector}
+            <label for="activitySelector">Pohlaví</label>
+        </div>
+
+    </div>    
+</form>
+<div class="col-12 py-5">
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Pořadí</th>
+                    <th scope="col">Jméno a příjmení</th>
+                    <th scope="col">Výkon</th>
+                </tr>
+            </thead>
+            <tbody id="performances">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    function showPerformance(schoolYear, activityId, gender) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("performances").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "leaderboard?do=search&schoolYear="+schoolYear+"&activityId="+activityId+"&gender="+gender, true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send();
+    }
+
+    var year = document.getElementById('yearSelector'),
+        activity = document.getElementById('activitySelector'),
+        gender = document.getElementById('genderSelector');
+
+    showPerformance(year.value, activity.value, gender.value);
+
+    year.addEventListener("change", function(){
+        showPerformance(year.value, activity.value, gender.value);
+    } );
+    activitySelector.addEventListener("change", function(){
+        showPerformance(year.value, activity.value, gender.value);
+    } );
+    gender.addEventListener("change", function(){
+        showPerformance(year.value, activity.value, gender.value);
+    } );
+</script>
+{/block}
