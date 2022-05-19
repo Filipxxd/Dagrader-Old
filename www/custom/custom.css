@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 4 version
+*/
+
 /* 
  **
  ***  Custom Css
@@ -23,7 +30,6 @@
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -56,13 +62,13 @@ body {
  */
 .scaler {
   -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
-  -ms-transition: all 0.5s linear;
   transition: all 0.5s linear;
 }
 
 .scaler:hover {
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
   transform: scale(1.02);
 }
 @media screen and (max-width: 992px) {
@@ -84,6 +90,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px var(--hoverWhite);
   box-shadow: inset 0 0 5px var(--hoverWhite);
   border-radius: 10px;
 }
@@ -149,9 +156,7 @@ video {
   cursor: pointer;
   text-align: center;
   -webkit-transition: background 0.1s linear;
-  -moz-transition: background 0.1s linear;
   -o-transition: background 0.1s linear;
-  -ms-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
 .iconLink:hover,
