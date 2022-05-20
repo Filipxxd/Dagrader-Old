@@ -33,7 +33,7 @@ class Criterias
 
     public function getActivityUnit($id): ?string
     {
-        return ($this->database->fetch('SELECT activityUnit FROM activities WHERE activityId = ?', $id)['activityUnit']);
+        return $this->database->fetch('SELECT activityUnit FROM activities WHERE activityId = ?', $id)['activityUnit'];
     }
 
     public function getYears(): array
@@ -129,7 +129,7 @@ class Criterias
 
     public function getMarkFromPerformance($databaseCriterias, $values): ?int
     {
-        if ($databaseCriterias['first'] < $databaseCriterias['second']) {
+        if ($databaseCriterias['first'] > $databaseCriterias['second']) {
             if ($databaseCriterias['first'] <= $values->performance) {
                 return 1;
             } elseif ($databaseCriterias['second'] <= $values->performance) {

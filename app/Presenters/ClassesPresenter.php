@@ -149,7 +149,7 @@ final class ClassesPresenter extends BasePresenter
                 $excelData .= implode("\t", $excelRow) . "\n";
             }
         } else {
-            $this->flashMessage("Chybička se vbloudila xd", 'alert-danger');
+            $this->error("xd", 500);
             $this->redirect('this');
         }
 

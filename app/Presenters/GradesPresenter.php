@@ -34,7 +34,7 @@ final class GradesPresenter extends BasePresenter
             $this->schoolYear = $studentIdentification->schoolYear;
             $this->criterias->setTeacherId($studentIdentification["teacherId"]);
         } else {
-            $this->redirect('Homepage:');
+            $this->error("Uživatel je učitel - nemá přístup ke známkám", 403);
             die();
         }
 

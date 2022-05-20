@@ -58,7 +58,6 @@ final class LeaderboardPresenter extends BasePresenter
             else $option = array("ASC", "MIN");
 
             $performances = $this->database->query('SELECT concat(' . $option[1] . '(p.performance), a.activityUnit) as performance, concat(u.fName, " ", u.lName) as studentName FROM performances p INNER JOIN activities a ON a.activityId = p.activityId INNER JOIN users u ON p.studentId = u.userId AND u.gender = ? INNER JOIN classes c ON c.classId = u.classId WHERE c.schoolYear = ? AND p.activityId = ? GROUP BY p.studentId ORDER BY performance ' . $option[0] . ' LIMIT 10 ', $gender, $schoolYear, $activityId)->fetchAll();
-            //print_r($performances);
         }
         $this->template->performances = $performances;
     }
