@@ -22,7 +22,7 @@ final class ClassesPresenter extends BasePresenter
     {
         parent::startup();
         if ($this->getUser()->roles['role'] !== 1) {
-            $this->redirect('Homepage:');
+            $this->error('Uživatel nemá roli == 1, přístup odepřen', 403);
             die();
         }
         $this->template->classes = $this->database
