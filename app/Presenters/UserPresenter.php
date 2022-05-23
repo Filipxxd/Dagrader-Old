@@ -55,7 +55,7 @@ final class UserPresenter extends Nette\Application\UI\Presenter
         $form->addPassword("password")
             ->setRequired()
             ->setHtmlAttribute("placeholder", 'Heslo')
-            ->setHtmlAttribute("class", "form-control")
+            ->setHtmlAttribute("class", "form-control pr-0")
             ->addRule($form::MAX_LENGTH, 'Heslo nesmí být delší než %d znaků', 25);
 
         $form->addCheckbox("stayLoggedIn", "Zůstat přihlášen")

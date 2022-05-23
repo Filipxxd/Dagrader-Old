@@ -15,6 +15,4 @@ final class HomepagePresenter extends BasePresenter
     {
         parent::startup();
     }
-
-  
 }
