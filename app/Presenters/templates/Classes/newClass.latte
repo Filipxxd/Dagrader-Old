@@ -24,28 +24,6 @@
         <div class="col-11 overflow-auto text-center border d-flex flex-column align-items-center mx-auto" style="height: 40vh; max-height: 40vh;" id="studentList">
 
         </div>
-        <script type="text/javascript">
-            function showStudents(str) {
-                if (str.length == 0) {
-                    document.getElementById('studentList').innerHTML = '';
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById('studentList').innerHTML = this.responseText;
-                        }
-                    };
-                    str = str.substring(str.indexOf(' ') + 1);
-                    xmlhttp.open('POST', 'studentsearch?do=search&string=' + str, true);
-                    xmlhttp.setRequestHeader(
-                    'Content-type',
-                    'application/x-www-form-urlencoded'
-                    );
-                    xmlhttp.send();
-                }
-            }
-        </script>
         <div class="col-12 mt-4">
             <button class="notBtn d-flex ms-auto align-items-center p-2 rounded text-decoration-none border iconLink clrBlack" type="submit" title="Uložit">
                 <i class="fas fa-save fs-3"></i>

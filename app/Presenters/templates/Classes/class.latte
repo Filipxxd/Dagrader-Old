@@ -61,26 +61,4 @@
         </div>
       {/form}
   </div>
-  <script type="text/javascript">
-    function showStudents(str) {
-        if (str.length == 0) {
-            document.getElementById('studentList').innerHTML = '';
-            return;
-        } else {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById('studentList').innerHTML = this.responseText;
-                }
-            };
-            str = str.substring(str.indexOf(' ') + 1);
-            xmlhttp.open('POST', 'studentsearch?do=search&string=' + str, true);
-            xmlhttp.setRequestHeader(
-            'Content-type',
-            'application/x-www-form-urlencoded'
-            );
-            xmlhttp.send();
-        }
-    }
-  </script>
 {/block}

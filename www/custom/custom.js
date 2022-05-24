@@ -45,3 +45,38 @@ function toggleVisibility(inputId, toggler) {
     toggler.classList.add('fa-eye');
   }
 }
+
+/*
+ * Searching availible students from db by fname/lastname
+ * Insert into div#studentList
+ */
+function showStudents(str) {
+  // var prevStudents = [...document.getElementById('studentList').children];
+  // prevStudents.forEach((student) => {
+  //   if (student.tagName == 'SPAN') {
+  //     if (student.children[0].checked == false) {
+  //       console.log(student.children[0].checked);
+  //       student.remove();
+  //     }
+  //   } else if (student.tagName == 'DIV') student.remove();
+  // });
+
+  if (str.length == 0) {
+    document.getElementById('studentList').innerHTML = '';
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('studentList').innerHTML = this.responseText;
+      }
+    };
+    str = str.substring(str.indexOf(' ') + 1);
+    xmlhttp.open('POST', 'studentsearch?do=search&string=' + str, true);
+    xmlhttp.setRequestHeader(
+      'Content-type',
+      'application/x-www-form-urlencoded'
+    );
+    xmlhttp.send();
+  }
+}
